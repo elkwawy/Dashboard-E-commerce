@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base { 
+    :root  { 
+        --main-color: #4880FF;
+        --sec-color: #909090;
+    }
+    .trans { 
+        @apply transition-all duration-300 ;
+    }
+    .beforeElement {
+        position: relative;
+    }
+
+    .beforeElement::before {
+        content: "";
+        @apply absolute top-0 left-0 -translate-x-[21px] bg-[#4880FF] rounded-r-md w-1.5 h-full;
+    }
+    /* .beforeElement { 
+        @apply before:absolute before:top-0 before:left-0 before:-translate-x-1/2 bg-[#4880FF] rounded-r-md w-full h-full
+    } */
+}
