@@ -6,7 +6,7 @@ import { FaAngleRight } from "react-icons/fa6";
 import Loader from '../utils/Loader';
 
 const RootLayout = () => {
-    const [sidebar, setSidebar] = useState(false);
+    const [sidebar, setSidebar] = useState(true);
     const openSidebar  = () => setSidebar(true) ;
     const closeSidebar  = () => setSidebar(false) ;
 
@@ -69,12 +69,12 @@ const RootLayout = () => {
     return (
         <div className='w-full flex overflow-x-hidden'>
             <Sidebar sidebar={sidebar} closeSidebar={closeSidebar} baseLink={baseRealLink} subLink={subRealLink} lastLink={lastRealLink} />
-            <div className='flex w-full flex-col gap-5'>
+            <div className='flex w-full flex-col'>
                 <Navbar sidebar={sidebar} openSidebar={openSidebar} />
                 
                 {/* whatever put in the App Router comes here  */}
-                <div className=' flex flex-col gap-5 w-full   h-full'>
-                    <div className='px-2 min-[300px]:px-5 flex gap-1 sm:gap-2 text-lg items-center w-full max-[373px]:text-xs max-sm:text-sm'>
+                <div className=' flex flex-col gap-5 w-full bg-[#F5F6FA] pt-5  h-full'>
+                    <div className='px-2 min-[300px]:px-5  flex gap-1 sm:gap-2 text-lg items-center w-full max-[373px]:text-xs max-sm:text-sm'>
                         <NavLink to={'/'} className={({isActive}) => `${isActive ? "" : "text-sec-color"} trans hover:text-gray-600 `}>Dashboard</NavLink>
                         {baseLink && <div className='flex items-center gap-1 sm:gap-2  '> 
                             <FaAngleRight className='text-sec-color mt-[2px]' />  
@@ -85,13 +85,13 @@ const RootLayout = () => {
                             <span className={` outline-0 ${lastLink ? "text-sec-color " : " cursor-pointer trans hover:text-gray-600"}`}>{subLink}</span> 
                         </div>}
                         
-                        {lastLink && <div className='flex  items-center gap-1 sm:gap-2 w-fit'> 
+                        {lastLink && <div className='flex items-center gap-1 sm:gap-2 w-fit'> 
                             <FaAngleRight className='text-sec-color mt-[2px] ' />  
                             <span className='cursor-pointer w-fit'>{lastLink}</span> 
                         </div>}
                     </div>
-                    
-                    <div className={'px-2 min-[300px]:px-5 w-full h-full'}>
+                    {/*  dashboard content comes here  */}
+                    <div className={'px-2 min-[300px]:px-5 bg-[#F5F6FA] w-full h-full'}>
                         <Outlet /> 
                     </div>
                 </div>
